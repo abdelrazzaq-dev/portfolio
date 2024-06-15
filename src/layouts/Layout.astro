@@ -1,0 +1,81 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image" href="/favicon.webp" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body dark:bg-dark-1 dark:text-light-3 max-w-5xl m-auto>
+        <div m-inline-2 lg:m-inline-0>
+            <div class="flex" flex-justify-between m-block-2 p-block-2 text-2xl>
+                <div class="flex" gap-1>
+                    <div i-carbon-code text-inherit color-inherit></div>
+                    <h1>BENBOUYA.ME</h1>
+                </div>
+
+                <div class="flex" gap-3>
+                    <button
+                        id="btn-theme-switch"
+                        dark:i-carbon-sun
+                        i-carbon-moon
+                        transition-
+                        title="switch application theme"></button>
+                    <a
+                        href="https://www.linkedin.com/in/abderrazzak-benbouya/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        i-carbon-logo-linkedin
+                        title="Abderrazzak Benbouya LinkedIn profile"
+                    >
+                        LinkedIn
+                    </a>
+                    <a
+                        href="https://github.com/abdelrazzaq-dev"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        i-carbon-logo-github
+                        title="Abderrazzak Benbouya GitHub profile"
+                    >
+                        GitHub
+                    </a>
+                </div>
+            </div>
+            <slot />
+        </div>
+    </body>
+    <script>
+        const btnThemeSwitch = document.getElementById("btn-theme-switch");
+        btnThemeSwitch.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+        });
+
+        const prefersDarkScheme = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+        );
+
+        if (prefersDarkScheme.matches) {
+            document.documentElement.classList.add("dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+        }
+
+        prefersDarkScheme.addEventListener("change", (e) => {
+            if (e.matches) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        });
+    </script>
+</html>

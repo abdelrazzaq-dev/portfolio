@@ -1,0 +1,32 @@
+.resume {
+    hr {
+        margin-block: 2rem 0;
+    }
+
+    h3 {
+        text-transform: uppercase;
+        margin-block: .5rem;
+        color: var(--lt-color-text-default);
+
+        @media (prefers-color-scheme: dark) {
+            color: var(--dk-color-text-default);
+        }
+    }
+
+    ul {
+        margin-block-end: 1rem;
+
+        li {
+            margin-inline-start: 1rem;
+            padding-block-end: .4rem;
+        }
+    }
+
+    a {
+        color: #1258a6;
+
+        @media (prefers-color-scheme: dark) {
+            color: #b0d2ff;
+        }
+    }
+}
